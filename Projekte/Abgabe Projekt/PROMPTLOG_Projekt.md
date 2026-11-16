@@ -31,3 +31,6 @@ Ergebnis:
 Korrektur: 
 
 1) /goal Setze alles aus dem Projekt um mit den Anforderungen aus SPEC.md und AGENTS.md
+
+
+/goal baue mir die Ausgleichsapp exakt nach den Vorgaben aus SPEC_Ausgleichung.md und AGENTS.md
