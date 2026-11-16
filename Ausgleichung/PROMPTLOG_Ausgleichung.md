@@ -29,3 +29,5 @@ Modus:
 Prompt:    
 Ergebnis:  
 Korrektur: 
+
+1) /goal Setze alles aus dem Projekt um mit den Anforderungen aus SPEC.md und AGENTS.md

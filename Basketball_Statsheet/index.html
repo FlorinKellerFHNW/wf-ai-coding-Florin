@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basketball-Statsheet</title>
+  <link rel="stylesheet"
+        href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Basketball-Statsheet</h1>
+    <p class="nicht-drucken">Erfasse die Statistiken deiner Spieler während des Spiels.</p>
+
+    <!-- 1. Spieler vor dem Spiel auswählen -->
+    <section class="nicht-drucken">
+      <h2>1. Spieler</h2>
+      <form id="spielerFormular">
+        <label for="spielerEingabe">Rückennummer oder Vorname:</label>
+        <input type="text" id="spielerEingabe" maxlength="20" placeholder="z. B. Nr. 7" required>
+        <button type="submit">Spieler hinzufügen</button>
+      </form>
+      <p id="spielerHinweis">Noch keine Spieler. Füge oben Spieler hinzu.</p>
+    </section>
+
+    <!-- 2. Statistiken erfassen -->
+    <section class="nicht-drucken">
+      <h2>2. Erfassen</h2>
+      <p>Aktuelles Viertel:</p>
+      <div id="viertelAuswahl"></div>
+      <p>Spieler wählen, dann öffnet sich das Fenster zum Erfassen:</p>
+      <div id="spielerAuswahl"></div>
+    </section>
+
+    <!-- Fenster zum Erfassen der Statistik eines Spielers -->
+    <dialog id="erfassenDialog">
+      <div class="dialog-kopf">
+        <h3 id="dialogTitel"></h3>
+        <button id="dialogSchliessenKnopf">Schliessen</button>
+      </div>
+      <div id="dialogInhalt"></div>
+    </dialog>
+
+    <!-- 3. Auswertung -->
+    <section id="auswertung">
+      <h2>3. Gesamtbericht</h2>
+      <h3>Alle Spieler (ganzes Spiel)</h3>
+      <div id="gesamtTabelle"></div>
+      <h3>Team pro Viertel</h3>
+      <div id="viertelTabelle"></div>
+      <button id="druckenKnopf" class="nicht-drucken">Spielbericht als PDF speichern / drucken</button>
+    </section>
+
+    <!-- 4. Bericht pro Spieler -->
+    <section class="nicht-drucken">
+      <h2>4. Spielerbericht</h2>
+      <label for="berichtAuswahl">Spieler:</label>
+      <select id="berichtAuswahl"></select>
+      <div id="berichtAnzeige"></div>
+      <button id="berichtSpeichernKnopf">Bericht als HTML-Datei speichern</button>
+    </section>
+
+    <section class="nicht-drucken">
+      <button id="zuruecksetzenKnopf" class="gefahr">Neues Spiel (alles löschen)</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ausgleichung Freie Stationierung</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Freie Stationierung – Ausgleichung</h1>
+    <p>Vermittelnde Ausgleichung in 2D (E, N) mit Distanzen, Richtungen, Massstab und Orientierung.
+       Alle Rechenschritte werden unten angezeigt.</p>
+  </header>
+
+  <main>
+
+    <!-- ===== Eingaben ===== -->
+    <section id="eingabe" class="eingabe">
+      <h2>Eingaben</h2>
+
+      <div id="fehlerBox" class="fehler" hidden></div>
+
+      <fieldset>
+        <legend>Näherungskoordinaten der Station</legend>
+        <div class="zeile">
+          <label>East (m)
+            <input type="text" inputmode="decimal" id="stationEast" data-station="east">
+          </label>
+          <label>North (m)
+            <input type="text" inputmode="decimal" id="stationNorth" data-station="north">
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Instrumentenmodell und Einstellungen</legend>
+        <div class="zeile">
+          <label>σ0 (a priori)
+            <input type="text" inputmode="decimal" data-param="sigma0">
+          </label>
+          <label>σ Richtung (gon)
+            <input type="text" inputmode="decimal" data-param="sigmaRichtung">
+          </label>
+          <label>σ Distanz konstant (m)
+            <input type="text" inputmode="decimal" data-param="sigmaDistanzKonstant">
+          </label>
+          <label>σ Distanz ppm
+            <input type="text" inputmode="decimal" data-param="sigmaDistanzPpm">
+          </label>
+        </div>
+        <div class="zeile">
+          <label>Toleranz Schlussprobe (m bzw. gon)
+            <input type="text" inputmode="decimal" data-param="toleranz">
+          </label>
+          <label>max. Iterationen
+            <input type="text" inputmode="numeric" data-param="maxIterationen">
+          </label>
+          <label>Ausreissergrenze |v|/σ
+            <input type="text" inputmode="decimal" data-param="ausreisserGrenze">
+          </label>
+        </div>
+        <p class="hinweis">Feste Konstanten: Erdradius R = 6 378 816 m, N-Ursprung = 1 200 000 m, Massstab-Näherung = 1.</p>
+      </fieldset>
+
+      <h3>Anschlusspunkte</h3>
+      <div class="tabellenRahmen">
+        <table id="punktTabelle" class="eingabeTabelle">
+          <thead>
+            <tr>
+              <th>Pt</th>
+              <th>East (m)</th>
+              <th>North (m)</th>
+              <th>Höhe (m)</th>
+              <th>SD (m)</th>
+              <th>Hz (gon)</th>
+              <th>V (gon)</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="punktKoerper"></tbody>
+        </table>
+      </div>
+
+      <div class="knoepfe">
+        <button type="button" id="punktHinzufuegen">+ Anschlusspunkt hinzufügen</button>
+      </div>
+
+      <details class="einfuegen">
+        <summary>Mehrere Zeilen einfügen</summary>
+        <p class="hinweis">Eine Zeile pro Punkt, Spalten durch Tabulator getrennt (z. B. aus einer Tabelle kopiert):
+           <strong>Pt E N H SD Hz V</strong></p>
+        <textarea id="einfuegeText" rows="5"></textarea>
+        <button type="button" id="einfuegeKnopf">Zeilen übernehmen</button>
+      </details>
+
+      <div class="knoepfe">
+        <button type="button" id="berechnenKnopf" class="haupt">Berechnen</button>
+        <button type="button" id="zuruecksetzenKnopf">Zurücksetzen</button>
+        <button type="button" id="druckenKnopf">Drucken / als PDF speichern</button>
+      </div>
+    </section>
+
+    <!-- ===== Ergebnis (wird von script.js gefüllt) ===== -->
+    <section id="ergebnis" class="ergebnis" hidden></section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
